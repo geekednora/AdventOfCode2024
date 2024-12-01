@@ -1,3 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System;
+using Day1;
 
-Console.WriteLine("Hello, World!");
+class Program
+{
+    static void Main()
+    {
+        var Solution = new Solution();
+        
+        Console.WriteLine(Solution.Solve1(@"Z:\source\AdventOfCode2024\Day1\input.txt"));
+        Console.WriteLine(Solution.Solve2(@"Z:\source\AdventOfCode2024\Day1\input.txt"));
+    }
+}
