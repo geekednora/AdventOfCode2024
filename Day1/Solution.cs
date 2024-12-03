@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Day1;
+﻿namespace AdventOfCode2024.Day1;
 
 public class Solution
 {
