@@ -147,15 +147,15 @@ public class Solution
         int count = 0;
         int match = 0;
 
-        /*for (int i = 1; i >= -1; i-=2)
+        for (int i = -1; i <= 1; i+=2)
         {
             try
             {
-                if (arr[x+i, y+i] == 'M' && arr[x+i*-1, y+i*-1] == 'S')
+                if (arr[x+i, y+i] == 'M' && arr[x-i, y-i] == 'S')
                 {
                     match++;
                 }
-                else if (arr[x-i, y+i] == 'M' && arr[x-i*-1, y+i*-1] == 'S')
+                if (arr[x-i, y+i] == 'M' && arr[x+i, y-i] == 'S')
                 {
                     match++;
                 }
@@ -164,32 +164,6 @@ public class Solution
             {
                 Console.WriteLine(e);
             }
-        }*/
-        
-        try
-        {
-            if (arr[x+1, y+1] == 'M' && arr[x-1, y-1] == 'S')
-            {
-                match++;
-            }
-            else if (arr[x-1, y-1] == 'M' && arr[x+1, y+1] == 'S')
-            {
-                match++;
-            }
-            
-            
-            if (arr[x+1, y-1] == 'M' && arr[x-1, y+1] == 'S')
-            {
-                match++;
-            }
-            else if (arr[x-1, y+1] == 'M' && arr[x+1, y-1] == 'S')
-            {
-                match++;
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
         }
 
         return match == 2;
