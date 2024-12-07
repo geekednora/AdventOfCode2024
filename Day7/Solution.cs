@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode2024.Day7;
+﻿using System.ComponentModel.Design;
+
+namespace AdventOfCode2024.Day7;
 
 public class Solution
 {
@@ -42,6 +44,27 @@ public class Solution
         long sum = 0;
         /* End of default */
 
+        var total = new List<(long result, List<long> oprs)>();
+
+        foreach (var t in input)
+        {
+            var split = t.Split(':');
+
+            var result = long.Parse(split[0]); 
+            var oprs = split[1].Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            
+            
+            total.Add((result, oprs.Select(long.Parse).ToList()));
+        }
+
+        foreach (var t in total)
+        {
+            if (GetResult(t.result, t.oprs))
+            {
+                sum += t.result;
+            }
+        }
+
         return sum;
     }
     
@@ -53,7 +76,7 @@ public class Solution
 
     private bool GetResult(long result, List<long> oprs)
     {
-            bool[] b = new bool[oprs.Count - 1]; // operators
+            int[] b = new int[oprs.Count - 1]; // operators
 
             do
             {
@@ -65,18 +88,23 @@ public class Solution
                 {
                     for (long i = 0; i < b.Length; i++)
                     {
-                        if (!b[i])
+                        if (b[i] == 0)
                         {
-                            b[i] = true;
+                            b[i] = 1;
+                            break;
+                        }
+                        else if (b[i] == 1)
+                        {
+                            b[i] = 2;
                             break;
                         }
                         else
                         {
-                            b[i] = false;
+                            b[i] = 0;
                         }
                     }
                 }
-            } while (b.Any(b => b == false));
+            } while (b.Any(b => b != 2));
             
             if (GetOperators(b, oprs) == result)
             {
@@ -89,19 +117,22 @@ public class Solution
         return true;
     }
 
-    private long GetOperators(bool[] oprs, List<long> nums)
+    private long GetOperators(int[] oprs, List<long> nums)
     {
         var sum = nums[0];
         for (int i = 0; i < nums.Count-1; i++)
         {
-            if (oprs[i] is false)
+            if (oprs[i] == 0)
             {
                 sum += nums[i+1];
             }
-
-            if (oprs[i] is true)
+            if (oprs[i] == 1)
             {
                 sum *= nums[i+1];
+            }
+            if (oprs[i] == 2)
+            {
+                sum = long.Parse(string.Concat(sum, nums[i+1]));
             }
         }
 
