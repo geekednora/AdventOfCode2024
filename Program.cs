@@ -9,12 +9,12 @@ internal static class Program
         Stopwatch sw1 = new Stopwatch();
         Stopwatch sw2 = new Stopwatch();
         
-        var solution = new AdventOfCode2024.Day8.Solution();
+        var solution = new AdventOfCode2024.Day9.Solution();
         
         /* First Solution */
         sw1.Start();
         
-        Console.Write("Solution 1: " + solution.Solve1(@"Z:\source\AdventOfCode2024\Day8\input.txt")
+        Console.Write("Solution 1: " + solution.Solve1(@"Z:\source\AdventOfCode2024\Day9\input.txt")
             , Console.ForegroundColor = ConsoleColor.DarkGreen); Console.ResetColor();
         
         sw1.Stop();
@@ -25,7 +25,7 @@ internal static class Program
         /* Second Solution */
         sw2.Start();
         
-        Console.Write("Solution 2: " + solution.Solve2(@"Z:\source\AdventOfCode2024\Day8\input.txt")
+        Console.Write("Solution 2: " + solution.Solve2(@"Z:\source\AdventOfCode2024\Day9\input.txt")
             , Console.ForegroundColor = ConsoleColor.DarkGreen); Console.ResetColor();
         
         sw2.Stop();
