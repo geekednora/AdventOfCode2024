@@ -19,6 +19,20 @@ public class Solution
 
         List<string> diskmap = new List<string>();
         GetDiskmap(blocks, spaces, diskmap);
+
+        diskmap = diskmap.ToIndividual();
+        var result = Data.Sort(diskmap);
+        
+        Console.WriteLine(string.Join("", result));
+
+        for (int i = 0; i < diskmap.Count; i++)
+        {
+            if (diskmap[i] == ".")
+            {
+                break;
+            }
+            sum += int.Parse(diskmap[i]) * i;
+        }
         
         return sum;
     }
@@ -152,6 +166,23 @@ public static class Data
 
     public static List<string> Sort(this List<string> data)
     {
+        List<string> result = new List<string>();
+        for (int i = 0; i < data.Count; i++)
+        {
+            if (data[i] == space.ToString())
+            {
+                for (int j = data.Count - 1; j >= i; j--)
+                {
+                    if (data[j] != space.ToString())
+                    {
+                        data[i] = data[j];
+                        data[j] = space.ToString();
+                        break;
+                    }
+                }
+            }
+        }
+
         return data;
     }
 }
